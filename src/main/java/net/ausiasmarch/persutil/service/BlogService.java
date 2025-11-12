@@ -21,22 +21,22 @@ public class BlogService {
     ArrayList<String> alFrases = new ArrayList<>();
 
     public BlogService() {
-        alFrases.add("La vida es bella.");
-        alFrases.add("El conocimiento es poder.");
-        alFrases.add("La perseverancia es la clave del éxito.");
-        alFrases.add("El tiempo es oro.");
-        alFrases.add("La creatividad es la inteligencia divirtiéndose.");
-        alFrases.add("Más vale tarde que nunca.");
-        alFrases.add("El cambio es la única constante en la vida.");
+        alFrases.add("No es profesor el que sabe, sino el que enseña.");
+        alFrases.add("Quien da, recibirá.");
+        alFrases.add("Aquel que presume sin cesar, solo refleja su inseguridad.");
+        alFrases.add("El que madruga, Dios le ayuda.");
+        alFrases.add("Solo aquel que ha sellado un pacto con su propia muerte tiene derecho a tomar la vida de otro.");
         alFrases.add("La esperanza es lo último que se pierde.");
-        alFrases.add("La unión hace la fuerza.");
-        alFrases.add("El respeto es la base de toda relación.");
-        alFrases.add("La comunicación es clave en cualquier relación.");
-        alFrases.add("Más vale pájaro en mano que ciento volando.");
-        alFrases.add("A mal tiempo, buena cara.");
-        alFrases.add("El que no arriesga no gana.");
-        alFrases.add("La suerte favorece a los audaces.");
-        alFrases.add("El tiempo lo dirá.");
+        alFrases.add("La confianza es fácil de perder, pero difícil de ganar.");
+        alFrases.add("Prefiero que me claven mil espadas antes que morder la mano que me da de comer.");
+        alFrases.add("Hay que trabajar duro, estudiar bien, comer y descansar mucho. Ese es el lema de la Escuela Tortuga.");
+        alFrases.add("Un Dios no es nada ante un no creyente.");
+        alFrases.add("Cada derrota es una pequeña victoria.");
+        alFrases.add("Hasta el guerrero de clase más baja se puede enfrentar a la élite si entrena lo suficiente.");
+        alFrases.add("Dos en armonía superan a uno en perfección.");
+        alFrases.add("Viaje antes que destino.");
+        alFrases.add("Verdad antes que mentira.");
+        alFrases.add("Vida antes que muerte.");
     }
 
     public Long rellenaBlog() {
