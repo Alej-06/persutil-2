@@ -89,6 +89,60 @@ public class BlogService {
         return oBlogRepository.count();
     }
 
+    public Long rellenaBlog(Long num) {
+
+        for (long j = 0;j<num;j++){
+        //Esto crea la entidad blog y la rellena
+        BlogEntity oBlogEntity = new BlogEntity();        
+        oBlogEntity.setTitulo( alFrases.get(oAleatorioService.GenerarNumeroAleatorioEnteroEnRango(0, alFrases.size() - 1)));
+        //rellena contenido
+        String contenidoGenerado = "";
+        int numFrases=oAleatorioService.GenerarNumeroAleatorioEnteroEnRango(1, 30);
+        for (int i=1; i<=numFrases; i++) {
+            contenidoGenerado += alFrases.get(oAleatorioService.GenerarNumeroAleatorioEnteroEnRango(0, alFrases.size() - 1)) + " ";
+            if (oAleatorioService.GenerarNumeroAleatorioEnteroEnRango(0, 10) == 1) {
+                contenidoGenerado += "\n";
+            }
+        }
+        oBlogEntity.setContenido(contenidoGenerado.trim());
+                contenidoGenerado += "\n";
+        // extraer 5 palabras aleatorias del contenido  para las etiquetas
+        String[] palabras = contenidoGenerado.split(" ");
+        // eliminar signos de puntuacion de las palabras
+        for (int i = 0; i < palabras.length; i++) {
+            palabras[i] = palabras[i].replace(".", "").replace(",", "").replace(";", "").replace(":", "").replace("!", "").replace("?", "");
+        }   
+        // convertir todas las palabras a minúsculas
+        for (int i = 0; i < palabras.length; i++) {
+            palabras[i] = palabras[i].toLowerCase();
+        }
+        // seleccionar palabras de más de 4 letras
+        ArrayList<String> alPalabrasFiltradas = new ArrayList<>();
+        for (String palabra : palabras) {
+            if (palabra.length() > 4 && !alPalabrasFiltradas.contains(palabra)) {
+                alPalabrasFiltradas.add(palabra);
+            }
+        }
+        palabras = alPalabrasFiltradas.toArray(new String[0]);
+        String etiquetas = "";
+        for (int i = 0; i < 5; i++) {
+            String palabra = palabras[oAleatorioService.GenerarNumeroAleatorioEnteroEnRango(0, palabras.length - 1)];
+            if (!etiquetas.contains(palabra)) {
+                etiquetas += palabra + ", ";
+            }
+        }
+        //Eliminar unltima coma
+        if (etiquetas.endsWith(", ")) {
+            etiquetas = etiquetas.substring(0, etiquetas.length() - 2);
+        }
+        oBlogEntity.setEtiquetas(etiquetas);
+        oBlogEntity.setFechaCreacion(LocalDateTime.now());
+        oBlogEntity.setFechaModificacion(null);
+        oBlogRepository.save(oBlogEntity);
+    }
+        return oBlogRepository.count();
+    }
+
     // ----------------------------CRUD---------------------------------
 
     public BlogEntity get(Long id) {

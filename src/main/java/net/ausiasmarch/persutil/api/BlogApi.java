@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,7 @@ import net.ausiasmarch.persutil.entity.BlogEntity;
 import net.ausiasmarch.persutil.service.AleatorioService;
 import net.ausiasmarch.persutil.service.BlogService;
 
+@CrossOrigin(origins = "*", allowedHeaders = "*")    //ESTO ES PARA SOLUCIONAR EL CORS
 @RestController
 @RequestMapping("/blog")
 public class BlogApi {
@@ -62,6 +64,12 @@ public class BlogApi {
     @GetMapping("/rellenauno")
     public ResponseEntity<Long> rellenaBlog() {
         return ResponseEntity.ok(oBlogService.rellenaBlog());
+    }
+
+    @PostMapping("/rellenavarios/{num}")
+    public ResponseEntity<Long> rellenaBlog(
+        @PathVariable Long num){
+        return ResponseEntity.ok(oBlogService.rellenaBlog(num));
     }
 
     // ----------------------------CRUD---------------------------------
